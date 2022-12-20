@@ -54,7 +54,8 @@ const questions = [
 ];
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile("README.md", generateMarkdown(data), (err) =>
+    fileName = "README.md";
+    fs.writeFile(fileName, generateMarkdown(data), (err) =>
     err ? console.error(err) : console.log("Successfully generated readme.")
     )
 }
@@ -63,13 +64,13 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer
         .prompt(questions)
-        .then((response) =>
-            renderLicenseLink(response.license),
-            renderLicenseBadge(),
-            renderLicenseSection(),
-            generateMarkdown(),
-            writeToFile()
-        );
+        .then((data) => {
+            //console.log(data.license[0])
+            // renderLicenseBadge(),
+            // renderLicenseSection(),
+             generateMarkdown(data)
+            // writeToFile()
+});
 }
 
 // Function call to initialize app
