@@ -1,6 +1,9 @@
+// To begin I link in the three libraries required to run the application. fs is built into node, Inquirer downloaded in the terminal, and generateMarkdown is an imported module defined in the generateMarkdown.js in the utils folder.
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
+
+// The array below of question objects are each a prompt the user will respond to. Each section of the readme is passed sequentially with the user entering all relevant information and desired text content when they are prompted. The returned object is then passed onto generateMarkdown where the input is turned into markdown text that may be printed to a readme.
 
 const questions = [
     {
@@ -64,6 +67,8 @@ const questions = [
 ];
 let fileName;
 
+// The function below creates the actual readme.md file and writes to it the markdown returned from generateMarkdown
+
 function writeToFile(fileName, data) {
     fileName = "READMEE.md";
     fs.writeFile(fileName, generateMarkdown(data), (err) =>
@@ -71,6 +76,7 @@ function writeToFile(fileName, data) {
     )
 }
 
+// init represents the actual function that runs the application calling it. Inquirer runs each of the questions described in the array above, and the data object is passed onto generateMarkdown before it is finally printed onto a created .md file
 
 function init() {
     inquirer
@@ -80,5 +86,5 @@ function init() {
 });
 }
 
-// Function call to initialize app
+// Function call to initialize application
 init();
