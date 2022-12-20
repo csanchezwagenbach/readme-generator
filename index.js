@@ -43,6 +43,16 @@ const questions = [
     },
     {
         type: "input",
+        message: "Who holds the copyright for this project?",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "What year was this copyright registered?",
+        name: "year"
+    },
+    {
+        type: "input",
         message: "What is your GitHub username?",
         name: "github"
     },
@@ -52,9 +62,11 @@ const questions = [
         name: "email"
     }
 ];
+let fileName;
+
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fileName = "README.md";
+    fileName = "READMEE.md";
     fs.writeFile(fileName, generateMarkdown(data), (err) =>
     err ? console.error(err) : console.log("Successfully generated readme.")
     )
@@ -65,11 +77,7 @@ function init() {
     inquirer
         .prompt(questions)
         .then((data) => {
-            //console.log(data.license[0])
-            // renderLicenseBadge(),
-            // renderLicenseSection(),
-             generateMarkdown(data)
-            // writeToFile()
+            writeToFile(fileName, data)
 });
 }
 
