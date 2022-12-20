@@ -2,15 +2,12 @@
 function renderLicenseLink(data) {
   if (data.license[0] == "MIT") {
     data.url = "https://img.shields.io/badge/License-MIT-yellow.svg"
-    console.log(data.url);
     return data;
   } else if (data.license[0] == "ISC") {
     data.url = "https://img.shields.io/badge/License-ISC-blue.svg"
-    console.log(data.url)
     return data;
   } else if (data.license[0] == "Apache") {
     data.url = "https://img.shields.io/badge/License-Apache_2.0-blue.svg"
-    console.log(data.url)
     return data;
   } else return "";
 }
