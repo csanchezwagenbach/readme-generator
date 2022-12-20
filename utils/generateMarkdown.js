@@ -1,3 +1,4 @@
+// The function below checks the user input passed into it as a parameter and based on the license the user chose. From there, this function creates a url property and assigns the appropriate url to that key.
 function renderLicenseLink(data) {
   if (data.license[0] == "MIT") {
     data.url = "https://img.shields.io/badge/License-MIT-yellow.svg"
@@ -14,7 +15,7 @@ function renderLicenseLink(data) {
   } else return "";
 }
 
-
+// Similar to the last function, based on a user's desired license, a property is created called license_text and the appropriate text content is assigned as the value.
 function renderLicenseSection(data) {
   if (data.license[0] == "MIT") {
     data.license_text =
@@ -57,6 +58,8 @@ function renderLicenseSection(data) {
     return data;
   } else return "";
 }
+
+// Finally, each aspect of the data object is passed to its appropriate position within a template literal containing markdown. The function returns the string of markdown text.
 
 function generateMarkdown(data) {
   renderLicenseLink(data);
